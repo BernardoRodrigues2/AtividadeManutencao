@@ -1,0 +1,150 @@
+### 1. Testar rota inicial
+GET http://localhost:3000/
+
+### 2. Cadastrar Cliente - Marcos
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Marcos",
+    "email": "marcos@gmail.com",
+    "senha": "123",
+    "cpf": "12345678912",
+    "telefone": "48999998888"
+}
+
+### 3. Cadastrar Cliente - Ana
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Ana",
+    "email": "ana@gmail.com",
+    "senha": "123",
+    "cpf": "22233344455",
+    "telefone": "48988887777"
+}
+
+### 4. Cadastrar Cliente - Roberto
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Roberto",
+    "email": "roberto@gmail.com",
+    "senha": "123",
+    "cpf": "98765432100",
+    "telefone": "48977776666"
+}
+
+### 5. Fazer Login
+# @name loginReq
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "marcos@gmail.com",
+    "senha": "123"
+}
+
+### 6. Listar Clientes
+GET http://localhost:3000/clientes
+Authorization: {{loginReq.response.body.token}}
+
+### 7. Consultar Cliente por ID
+GET http://localhost:3000/cliente/1
+Authorization: {{loginReq.response.body.token}}
+
+### 8. Buscar Cliente por Nome
+GET http://localhost:3000/cliente/buscarNome/Marcos
+Authorization: {{loginReq.response.body.token}}
+
+### 9. Buscar Nome Inexistente
+GET http://localhost:3000/cliente/buscarNome/Inexistente
+Authorization: {{loginReq.response.body.token}}
+
+### 10. Atualizar Cliente
+PUT http://localhost:3000/cliente/4
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "nome": "Marcos Atualizado",
+    "email": "marcosnovo@gmail.com",
+    "telefone": "48999998888"
+}
+
+### 11. Cadastrar Console
+POST http://localhost:3000/console
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "PlayStation 5",
+    "marca": "Sony",
+    "numSerie": "12345",
+    "tipo": "Videogame",
+    "idCliente": 1
+}
+
+### 12. Cadastrar Segundo Console
+POST http://localhost:3000/console
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "Xbox Series S",
+    "marca": "Microsoft",
+    "numSerie": "67890",
+    "tipo": "Videogame",
+    "idCliente": 2
+}
+
+### 13. Consultar Console por ID
+POST http://localhost:3000/console/1
+Authorization: {{loginReq.response.body.token}}
+
+### 14. Cadastrar Agendamento
+POST http://localhost:3000/agendamento
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-25",
+    "hora": "14:00:00",
+    "tipoServico": "Manutenção",
+    "idCliente": 1,
+    "idConsole": 1
+}
+
+### 15. Cadastrar Segundo Agendamento
+POST http://localhost:3000/agendamento
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-26",
+    "hora": "10:30:00",
+    "tipoServico": "Limpeza",
+    "idCliente": 2,
+    "idConsole": 2
+}
+
+### 16. Listar Agendamentos
+GET http://localhost:3000/agendamentos
+Authorization: {{loginReq.response.body.token}}
+
+### 17. Atualizar Agendamento
+PUT http://localhost:3000/agendamento/3
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-27",
+    "hora": "15:00:00",
+    "tipoServico": "Manutenção completa"
+}
+
+### 18. Excluir Cliente - Roberto
+DELETE http://localhost:3000/cliente/4
+Authorization: {{loginReq.response.body.token}}
