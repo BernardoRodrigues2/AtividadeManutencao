@@ -7,7 +7,7 @@ const cadastrarAgendamento = async (req, res) => {
     const valores = req.body
 
     // Verificação do preenchimento dos campos
-    if (!valores.data || !valores.hora || !valores.idCliente || !valores.idConsole) {
+    if (!valores.data || !valores.hora || !valores.tipoServico || !valores.idCliente || !valores.idConsole) {
         return res.status(400).json({ message: 'Todos os campos são obrigatórios!' })
     }
 

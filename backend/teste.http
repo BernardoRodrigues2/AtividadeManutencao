@@ -64,7 +64,7 @@ GET http://localhost:3000/cliente/buscarNome/Inexistente
 Authorization: {{loginReq.response.body.token}}
 
 ### 10. Atualizar Cliente
-PUT http://localhost:3000/cliente/4
+PUT http://localhost:3000/cliente/1
 Content-Type: application/json
 Authorization: {{loginReq.response.body.token}}
 
@@ -100,11 +100,28 @@ Authorization: {{loginReq.response.body.token}}
     "idCliente": 2
 }
 
-### 13. Consultar Console por ID
-POST http://localhost:3000/console/1
+### 13. Cadastrar Terceiro Console
+POST http://localhost:3000/console
+Content-Type: application/json
 Authorization: {{loginReq.response.body.token}}
 
-### 14. Cadastrar Agendamento
+{
+    "modelo": "Nintendo Switch",
+    "marca": "Nintendo",
+    "numSerie": "NSW-2026-003",
+    "tipo": "Videogame",
+    "idCliente": 3
+}
+
+### 14. Listar Consoles
+GET http://localhost:3000/consoles
+Authorization: {{loginReq.response.body.token}}
+
+### 15. Consultar Console por ID
+GET http://localhost:3000/console/1
+Authorization: {{loginReq.response.body.token}}
+
+### 16. Cadastrar Agendamento
 POST http://localhost:3000/agendamento
 Content-Type: application/json
 Authorization: {{loginReq.response.body.token}}
@@ -117,7 +134,7 @@ Authorization: {{loginReq.response.body.token}}
     "idConsole": 1
 }
 
-### 15. Cadastrar Segundo Agendamento
+### 17. Cadastrar Segundo Agendamento
 POST http://localhost:3000/agendamento
 Content-Type: application/json
 Authorization: {{loginReq.response.body.token}}
@@ -130,12 +147,12 @@ Authorization: {{loginReq.response.body.token}}
     "idConsole": 2
 }
 
-### 16. Listar Agendamentos
+### 18. Listar Agendamentos
 GET http://localhost:3000/agendamentos
 Authorization: {{loginReq.response.body.token}}
 
-### 17. Atualizar Agendamento
-PUT http://localhost:3000/agendamento/3
+### 19. Atualizar Agendamento
+PUT http://localhost:3000/agendamento/2
 Content-Type: application/json
 Authorization: {{loginReq.response.body.token}}
 
@@ -145,6 +162,6 @@ Authorization: {{loginReq.response.body.token}}
     "tipoServico": "Manutenção completa"
 }
 
-### 18. Excluir Cliente - Roberto
-DELETE http://localhost:3000/cliente/4
+### 20. Excluir Cliente - Roberto
+DELETE http://localhost:3000/cliente/3
 Authorization: {{loginReq.response.body.token}}

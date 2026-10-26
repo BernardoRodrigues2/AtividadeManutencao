@@ -30,9 +30,9 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Senha incorreta!' })
         }
 
-        // Validade do token ajustada para 2 horas (2h * 60m * 60s * 1000ms)
-        const tresHorasEmMs = 2 * 60 * 60 * 1000
-        const tempoExpiracao = Date.now() + tresHorasEmMs
+        // Validade do token ajustada para 90 minutos (90m * 60s * 1000ms)
+        const noventaMinutosEmMs = 90 * 60 * 1000
+        const tempoExpiracao = Date.now() + noventaMinutosEmMs
 
         const payload = {
             idCliente: cliente.codCliente,

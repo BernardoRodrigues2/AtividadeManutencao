@@ -1,3 +1,9 @@
+const token = localStorage.getItem('token')
+
+if (!token) {
+    location.href = '../index.html'
+}
+
 const resposta = document.getElementById('resposta')
 const btn = document.getElementById('btn_listar')
 
@@ -6,7 +12,10 @@ btn.addEventListener('click', (e) => {
 
     fetch('http://localhost:3000/clientes', {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
     })
 
     .then(res => res.json())
@@ -33,7 +42,7 @@ function criarTbody(dados) {
         corpo += `<td>${el.nome}</td>`
         corpo += `<td>${el.email}</td>`
         corpo += `<td>${el.cpf}</td>`
-        corpo += `<td>${el.endereco}</td>`
+        corpo += `<td>${el.telefone}</td>`
         corpo += `</tr>`
     })
     corpo += `</tbody>`
@@ -48,7 +57,7 @@ function criarThead() {
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>CPF</th>
-                <th>Endereço</th>
+                <th>Telefone</th>
             </tr>
         </thead>
     `

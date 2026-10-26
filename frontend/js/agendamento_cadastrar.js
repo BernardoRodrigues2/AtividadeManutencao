@@ -14,6 +14,7 @@ btn.addEventListener('click', (e) => {
     const valores = {
         data: document.getElementById('data').value,
         hora: document.getElementById('hora').value,
+        tipoServico: document.getElementById('tipoServico').value,
         idConsole: Number(document.getElementById('idConsole').value),
         idCliente: Number(document.getElementById('idCliente').value)
     }

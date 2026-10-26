@@ -36,6 +36,33 @@ const cadastrarConsole = async (req, res) => {
     }
 }
 
+// Implementando funcionalidade de listagem de Consoles
+const listarConsoles = async (req, res) => {
+    try {
+        const consoles = await Console.findAll()
+        let resultado = []
+
+        consoles.forEach((el) => {
+            const bytes = CryptoJS.AES.decrypt(el.numSerie, Key)
+            const numSerieDescript = bytes.toString(CryptoJS.enc.Utf8)
+
+            resultado.push({
+                codConsole: el.codConsole,
+                modelo: el.modelo,
+                marca: el.marca,
+                numSerie: numSerieDescript,
+                tipo: el.tipo,
+                idCliente: el.idCliente
+            })
+        })
+
+        return res.status(200).json(resultado)
+    } catch (err) {
+        console.error('Erro ao realizar operação!', err)
+        return res.status(500).json({ message: 'Erro ao realizar operação!' })
+    }
+}
+
 // Implementando funcionalidade de consulta de Console
 const consultarConsole = async (req, res) => {
     const id = req.params.id
@@ -67,4 +94,4 @@ const consultarConsole = async (req, res) => {
 }
 
 // Implementando funcionalidade de consulta de Console
-module.exports = { cadastrarConsole, consultarConsole };
+module.exports = { cadastrarConsole, listarConsoles, consultarConsole };

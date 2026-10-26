@@ -50,7 +50,8 @@ app.get('/cliente/buscarNome/:nome', clienteController.consultarNome)
 
 //Rotas do controller do Console -->
 app.post('/console', consoleController.cadastrarConsole)
-app.post('/console/:id', consoleController.consultarConsole)
+app.get('/consoles', consoleController.listarConsoles)
+app.get('/console/:id', consoleController.consultarConsole)
 
 // Rotas do controller do Agendamento -->
 app.post('/agendamento', agendamentoController.cadastrarAgendamento)

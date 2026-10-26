@@ -1,8 +1,11 @@
 -- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
--- Host: localhost    Database: a2
+-- Host: localhost    Database: db_pixelfix
 -- ------------------------------------------------------
 -- Server version	8.0.40
+
+CREATE DATABASE IF NOT EXISTS `db_pixelfix`;
+USE `db_pixelfix`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -92,7 +95,7 @@ CREATE TABLE `consoles` (
   PRIMARY KEY (`codConsole`),
   KEY `idCliente` (`idCliente`),
   CONSTRAINT `consoles_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`codCliente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +104,7 @@ CREATE TABLE `consoles` (
 
 LOCK TABLES `consoles` WRITE;
 /*!40000 ALTER TABLE `consoles` DISABLE KEYS */;
-INSERT INTO `consoles` VALUES (1,'PlayStation 5','Sony','U2FsdGVkX1+Yjcwx5UlZQTYnVDsTkxxGsjhbTTiT0oE=','Videogame',1),(2,'Xbox Series S','Microsoft','U2FsdGVkX18xKpawj06OnyzatB6wnELaCVDpPTo+p5E=','Videogame',2);
+INSERT INTO `consoles` VALUES (1,'PlayStation 5','Sony','U2FsdGVkX1+Yjcwx5UlZQTYnVDsTkxxGsjhbTTiT0oE=','Videogame',1),(2,'Xbox Series S','Microsoft','U2FsdGVkX18xKpawj06OnyzatB6wnELaCVDpPTo+p5E=','Videogame',2),(3,'Nintendo Switch','Nintendo','U2FsdGVkX1+XO5naYtIFVEAiHAqtI19rL7584ZrngYY=','Videogame',3);
 /*!40000 ALTER TABLE `consoles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
